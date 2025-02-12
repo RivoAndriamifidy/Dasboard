@@ -3,17 +3,24 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FaceDetectionComponent } from './components/face-detection/face-detection.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { WebcamComponent } from './components/webcam/webcam.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FaceDetectionComponent,
+    WebcamComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })
