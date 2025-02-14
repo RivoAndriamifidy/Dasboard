@@ -1,11 +1,12 @@
 <div class="container">
-  <h2>Détection des visages</h2>
+  <div class="row d-flex justify-content-center align-items-center h-100">
+  <h2 class="text-center">Détection des visages</h2>
   
   <!-- Affichage du flux vidéo -->
-  <video #video width="640" height="480" autoplay></video>
+  <video #video width="640" height="480" autoplay class="video"></video>
   
   <!-- Bouton pour déclencher la capture et la détection -->
-  <button (click)="capture()">📸 Capturer</button>
+  <button type="button"  class="btn btn-primary btn-lg mt-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="capture()">📸 Capturer</button>
   
   <!-- Affichage de la date et l'heure de la détection -->
   <div *ngIf="detectionDate">
@@ -18,5 +19,6 @@
     <ul>
       <li *ngFor="let face of detectedFaces">{{ face.name }}</li>
     </ul>
+  </div>
   </div>
 </div>

@@ -3,14 +3,13 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FaceDetectionComponent } from './components/face-detection/face-detection.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { WebcamComponent } from './components/webcam/webcam.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FaceDetectionComponent,
     WebcamComponent
   ],
   imports: [
@@ -20,7 +19,8 @@ import { WebcamComponent } from './components/webcam/webcam.component';
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
