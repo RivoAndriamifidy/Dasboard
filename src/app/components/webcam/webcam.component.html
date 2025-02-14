@@ -1,24 +1,28 @@
-<div class="container">
-  <div class="row d-flex justify-content-center align-items-center h-100">
-  <h2 class="text-center">Détection des visages</h2>
-  
-  <!-- Affichage du flux vidéo -->
-  <video #video width="640" height="480" autoplay class="video"></video>
-  
-  <!-- Bouton pour déclencher la capture et la détection -->
-  <button type="button"  class="btn btn-primary btn-lg mt-3" style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="capture()">📸 Capturer</button>
-  
-  <!-- Affichage de la date et l'heure de la détection -->
-  <div *ngIf="detectionDate">
-    <p><strong>Date/Heure de la détection :</strong> {{ detectionDate }}</p>
-  </div>
-  
-  <!-- Affichage de la liste des visages détectés -->
-  <div *ngIf="detectedFaces.length > 0">
-    <h3>Visages détectés :</h3>
-    <ul>
-      <li *ngFor="let face of detectedFaces">{{ face.name }}</li>
-    </ul>
-  </div>
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <!-- Partie gauche : Interface de détection -->
+    <div class="col-md-6 text-center">
+      <h2 class="text-dark mb-4" style="font-family: 'Arial', sans-serif; font-weight: bold;">Détection des visages</h2>
+    
+      <!-- Affichage du flux vidéo -->
+      <video #video width="100%" height="auto" autoplay class="video mb-4" style="border-radius: 10px; border: 2px solid  #1b1c1d; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);"></video>
+    
+      <!-- Bouton pour capturer -->
+      <button type="button" class="btn btn-dark btn-lg mt-3" style="width: 250px; padding: 0.8rem 1.5rem;" (click)="capture()">
+        <i class="fas fa-camera"></i> Capturer
+      </button>
+    </div>
+
+    <!-- Partie droite : Affichage des infos -->
+    <div class="col-md-6 text-left">
+      <div class="info-section">
+        <!-- Nom de l'utilisateur détecté -->
+        <p><strong>Nom :</strong> <span *ngFor="let face of detectedFaces">{{ face.name }}</span></p>
+        
+        <!-- Date et heure d'arrivée -->
+        <p><strong>Date :</strong> {{ detectionDate | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Heure :</strong> {{ detectionDate | date: 'HH:mm:ss' }}</p>
+      </div>
+    </div>
   </div>
 </div>
