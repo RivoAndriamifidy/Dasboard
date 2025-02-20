@@ -1,67 +1,68 @@
 <div class="d-flex">
-    <!-- MENU LATÉRAL -->
-    <div class="sidebar text-white"   style="position: relative;">
-      <ul class="nav flex-column">
-        <li class="nav-item mt-3" (click)="setActive('dashboard')">
-          <a class="nav-link text-white" [class.active]="activePage === 'dashboard'">
-            <i class="fa fa-home"></i> Tableau de bord
-          </a>
-        </li>    
-        <li class="nav-item mt-3" (click)="setActive('employees')">
-          <a class="nav-link text-white" [class.active]="activePage === 'employees'">
-            <i class="fa fa-users"></i> Gestion des employés
-          </a>
-        </li>
-        <li class="nav-item mt-3" (click)="setActive('attendance')">
-          <a class="nav-link text-white" [class.active]="activePage === 'attendance'">
-            <i class="fa fa-clock-o"></i> Gestion des pointages
-          </a>
-        </li>
-        <li class="nav-item mt-3" (click)="setActive('conge')">
-          <a class="nav-link text-white" [class.active]="activePage === 'conge'">
-            <i class="fa fa-calendar-check-o"></i> Gestion des congés
-          </a>
-        </li>        
-        <li class="nav-item mt-3" (click)="setActive('salaries')">
-          <a class="nav-link text-white" [class.active]="activePage === 'salaries'">
-            <i class="fa fa-money-bill"></i> Gestion des salaires
-          </a>
-        </li>        
-        <li class="nav-item mt-3" (click)="setActive('settings')">
-          <a class="nav-link text-white" [class.active]="activePage === 'settings'">
-            <i class="fa fa-cog"></i> Paramètres
-          </a>
-        </li>
-      </ul>
-    </div>
-  
-    <!-- CONTENU PRINCIPAL -->
-    <div class="container p-4">
-      <div *ngIf="activePage === 'dashboard'">
-        <app-admin-paneau></app-admin-paneau>
-      </div>
-  
-      <div *ngIf="activePage === 'employees'">
-        <app-employees></app-employees>
-      </div>
-  
-      <div *ngIf="activePage === 'attendance'">
-        <app-employees-pointage></app-employees-pointage>
-      </div>
+  <!-- MENU LATÉRAL -->
+  <div class="sidebar text-white p-3">
+    <ul class="nav flex-column">
+      <li class="nav-item mt-2" (click)="setActive('dashboard')">
+        <a class="nav-link" [class.active]="activePage === 'dashboard'">
+          <i class="fa fa-home"></i> Tableau de bord
+        </a>
+      </li>    
+      <li class="nav-item mt-2" (click)="setActive('employees')">
+        <a class="nav-link" [class.active]="activePage === 'employees'">
+          <i class="fa fa-users"></i> Gestion des employés
+        </a>
+      </li>
+      <li class="nav-item mt-2" (click)="setActive('attendance')">
+        <a class="nav-link" [class.active]="activePage === 'attendance'">
+          <i class="fa fa-clock-o"></i> Gestion des pointages
+        </a>
+      </li>
+      <li class="nav-item mt-2" (click)="setActive('conge')">
+        <a class="nav-link" [class.active]="activePage === 'conge'">
+          <i class="fa fa-calendar-check-o"></i> Gestion des congés
+        </a>
+      </li>        
+      <li class="nav-item mt-2" (click)="setActive('salaries')">
+        <a class="nav-link" [class.active]="activePage === 'salaries'">
+          <i class="fa fa-money"></i> Gestion des salaires
+        </a>
+      </li>  
+      <li class="nav-item mt-2" (click)="setActive('users')">
+        <a class="nav-link" [class.active]="activePage === 'users'">
+          <i class="fa fa-user"></i> Gestion des utilisateurs
+        </a>
+      </li>      
+      <li class="nav-item mt-2" (click)="setActive('settings')">
+        <a class="nav-link" [class.active]="activePage === 'settings'">
+          <i class="fa fa-cog"></i> Paramètres
+        </a>
+      </li>
+    </ul>
+  </div>
 
-      <div *ngIf="activePage === 'conge'">
-        <app-conge></app-conge>
-      </div>
-  
-      <div *ngIf="activePage === 'salaries'">
-        <h2>💰 Gestion des salaires</h2>
-        <p>Calcul des salaires...</p>
-      </div>
-  
-      <div *ngIf="activePage === 'settings'">
-        <h2>⚙️ Paramètres</h2>
-        <p>Configurations du système...</p>
-      </div>
+  <!-- CONTENU PRINCIPAL -->
+  <div class="container p-4 content">
+    <div *ngIf="activePage === 'dashboard'">
+      <app-admin-paneau></app-admin-paneau>
+    </div>
+    <div *ngIf="activePage === 'employees'">
+      <app-employees></app-employees>
+    </div>
+    <div *ngIf="activePage === 'attendance'">
+      <app-employees-pointage></app-employees-pointage>
+    </div>
+    <div *ngIf="activePage === 'conge'">
+      <app-conge></app-conge>
+    </div>
+    <div *ngIf="activePage === 'salaries'">
+      <app-salaires></app-salaires>
+    </div>
+    <div *ngIf="activePage === 'users'">
+      <app-users></app-users>
+    </div>
+    <div *ngIf="activePage === 'settings'">
+      <h2>⚙️ Paramètres</h2>
+      <p>Configurations du système...</p>
     </div>
   </div>
-  
+</div>

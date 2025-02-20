@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <h2>💰 Gestion des Salaires</h2>
+
+    <!-- Filtre par mois et année -->
+    <div class="d-flex mb-3">
+        <input type="month" class="form-control w-25" [(ngModel)]="selectedMonth" />
+        <button class="btn btn-primary ml-2" (click)="filterSalaries()">Filtrer</button>
+    </div>
+
+    <!-- Bouton d'ajout d'un salaire -->
+    <button class="btn btn-success mb-3" (click)="openAddSalaryModal()">
+        <i class="fa fa-plus"></i> Ajouter un salaire
+    </button>
+
+    <!-- Tableau des salaires -->
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>Employé</th>
+                <th>Poste</th>
+                <th>Salaire de base</th>
+                <th>Bonus</th>
+                <th>Total</th>
+                <th>Mois</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let salary of salaries; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ salary.employeeName }}</td>
+                <td>{{ salary.position }}</td>
+                <td>{{ salary.baseSalary | currency:'EUR' }}</td>
+                <td>{{ salary.bonus | currency:'EUR' }}</td>
+                <td>{{ salary.totalSalary | currency:'EUR' }}</td>
+                <td>{{ salary.month }}</td>
+                <td>
+                    <span [ngClass]="{
+                        'badge badge-success': salary.status === 'Payé',
+                        'badge badge-warning': salary.status === 'En attente'
+                    }">{{ salary.status }}</span>
+                </td>
+                <td>
+                    <button class="btn btn-warning btn-sm" (click)="editSalary(salary)">
+                        <i class="fa fa-pencil"></i> Modifier
+                    </button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteSalary(salary.id)">
+                        <i class="fa fa-trash"></i> Supprimer
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Modal pour ajouter un salaire -->
+    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showAddSalaryModal}" [style.display]="showAddSalaryModal ? 'block' : 'none'">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between">
+                    <h5 class="modal-title">Ajouter un salaire</h5>
+                    <button type="button" class="close" (click)="closeAddSalaryModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form (ngSubmit)="addSalary()">
+                        <div class="form-group">
+                            <label for="employeeSalary">Employé</label>
+                            <select id="employeeSalary" [(ngModel)]="newSalary.employeeName" name="employeeName" class="form-control" required>
+                                <option *ngFor="let employee of employees" [value]="employee.name">{{ employee.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="baseSalary">Salaire de base</label>
+                            <input type="number" id="baseSalary" [(ngModel)]="newSalary.baseSalary" name="baseSalary" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="bonus">Bonus</label>
+                            <input type="number" id="bonus" [(ngModel)]="newSalary.bonus" name="bonus" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="month">Mois</label>
+                            <input type="month" id="month" [(ngModel)]="newSalary.month" name="month" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

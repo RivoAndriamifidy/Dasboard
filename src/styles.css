@@ -2,3 +2,32 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.navbar {
+    border-radius: 0 0 10px 10px; /* Coins arrondis en bas */
+    padding: 12px 20px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white;
+    border-radius: 8px;
+    padding: 8px 15px;
+    transition: 0.3s;
+  }
+  
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    background: #495057;
+    color: #f8f9fa;
+    font-weight: bold;
+  }
+  
+  /* Ajout d'un espace pour éviter que le contenu soit caché sous la navbar */
+  body {
+    padding-top: 60px; /* Ajuste selon la hauteur de la navbar */
+  }
+  
