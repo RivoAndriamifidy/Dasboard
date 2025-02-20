@@ -1,0 +1,61 @@
+<div class="d-flex">
+    <!-- MENU LATÉRAL -->
+    <div class="sidebar text-white"   style="position: relative;">
+      <ul class="nav flex-column">
+        <li class="nav-item mt-3" (click)="setActive('dashboard')" >
+          <a class="nav-link text-white" [class.active]="activePage === 'dashboard'">
+            <i class="fa fa-home"></i> Tableau de bord
+          </a>
+        </li>
+        <li class="nav-item mt-3" (click)="setActive('employees')">
+          <a class="nav-link text-white" [class.active]="activePage === 'employees'">
+            <i class="fa fa-users"></i> Gestion des employés
+          </a>
+        </li>
+        <li class="nav-item mt-3" (click)="setActive('attendance')">
+          <a class="nav-link text-white" [class.active]="activePage === 'attendance'">
+            <i class="fa fa-clock-o"></i> Gestion des pointages
+          </a>
+        </li>
+        <li class="nav-item mt-3" (click)="setActive('salaries')">
+          <a class="nav-link text-white" [class.active]="activePage === 'salaries'">
+            <i class="fa fa-money"></i> Gestion des salaires
+          </a>
+        </li>
+        <li class="nav-item mt-3" (click)="setActive('settings')">
+          <a class="nav-link text-white" [class.active]="activePage === 'settings'">
+            <i class="fa fa-cog"></i> Paramètres
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- CONTENU PRINCIPAL -->
+    <div class="p-4">
+      <div *ngIf="activePage === 'dashboard'">
+        <h2>📊 Tableau de bord</h2>
+        <p>Statistiques générales...</p>
+      </div>
+  
+      <div *ngIf="activePage === 'employees'">
+        <h2>👤 Gestion des employés</h2>
+        <p>Liste des employés...</p>
+      </div>
+  
+      <div *ngIf="activePage === 'attendance'">
+        <h2>⏱️ Gestion des pointages</h2>
+        <p>Historique des pointages...</p>
+      </div>
+  
+      <div *ngIf="activePage === 'salaries'">
+        <h2>💰 Gestion des salaires</h2>
+        <p>Calcul des salaires...</p>
+      </div>
+  
+      <div *ngIf="activePage === 'settings'">
+        <h2>⚙️ Paramètres</h2>
+        <p>Configurations du système...</p>
+      </div>
+    </div>
+  </div>
+  

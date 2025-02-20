@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { WebcamComponent } from './components/webcam/webcam.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WebcamComponent
+    WebcamComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
