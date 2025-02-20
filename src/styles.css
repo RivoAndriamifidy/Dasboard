@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%; font-size: 12px;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .navbar {
     border-radius: 0 0 10px 10px; /* Coins arrondis en bas */
     padding: 12px 20px;
+    background-color: #495057;
   }
   
   .navbar-brand {
@@ -23,7 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
     background: #495057;
     color: #f8f9fa;
-    font-weight: bold;
+    cursor: pointer;
   }
   
   /* Ajout d'un espace pour éviter que le contenu soit caché sous la navbar */

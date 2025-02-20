@@ -20,7 +20,7 @@ body {
 
 .nav-link:hover, .nav-link.active {
   background: #495057;
-  font-weight: bold;
+  cursor: pointer;
 }
 
 .content {

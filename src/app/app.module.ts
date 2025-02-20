@@ -13,6 +13,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeesPointageComponent } from './components/employees-pointage/employees-pointage.component';
 import { CongeComponent } from './components/conge/conge.component';
 import { SalairesComponent } from './components/salaires/salaires.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SalairesComponent } from './components/salaires/salaires.component';
     EmployeesComponent,
     EmployeesPointageComponent,
     CongeComponent,
-    SalairesComponent
+    SalairesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

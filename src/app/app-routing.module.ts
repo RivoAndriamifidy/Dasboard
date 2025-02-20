@@ -5,6 +5,7 @@ import { WebcamComponent } from './components/webcam/webcam.component';
 import { AdminPaneauComponent } from './components/admin-paneau/admin-paneau.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeesPointageComponent } from './components/employees-pointage/employees-pointage.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'dashboard/admin-panneau', component: AdminPaneauComponent},
   {path: 'dashboard/employees', component: EmployeesComponent},
   {path: 'dashboard/emplyees-pointage', component: EmployeesPointageComponent},
+  {path: 'dashboard/users', component: UsersComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];
 

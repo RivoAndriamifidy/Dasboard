@@ -1,0 +1,62 @@
+<div class="card p-4">
+  <h3>👥 Gestion des utilisateurs</h3>
+
+  <button class="btn btn-success mb-3" (click)="openForm()">
+    <i class="fa fa-plus"></i> Ajouter un utilisateur
+  </button>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span class="badge" [ngClass]="user.active ? 'bg-success' : 'bg-danger'">
+            {{ user.active ? 'Actif' : 'Inactif' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="editUser(user)">✏️ Modifier</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">🗑️ Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulaire d'ajout/modification -->
+  <div *ngIf="isFormOpen" class="modal">
+    <div class="modal-content">
+      <h4>{{ editMode ? 'Modifier' : 'Ajouter' }} un utilisateur</h4>
+      <form (submit)="saveUser()">
+        <label>Nom :</label>
+        <input type="text" [(ngModel)]="currentUser.name" required />
+
+        <label>Email :</label>
+        <input type="email" [(ngModel)]="currentUser.email" required />
+
+        <label>Rôle :</label>
+        <select [(ngModel)]="currentUser.role">
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+
+        <label>Actif :</label>
+        <input type="checkbox" [(ngModel)]="currentUser.active" />
+
+        <button type="submit" class="btn btn-success">💾 Sauvegarder</button>
+        <button type="button" class="btn btn-secondary" (click)="closeForm()">❌ Annuler</button>
+      </form>
+    </div>
+  </div>
+</div>
