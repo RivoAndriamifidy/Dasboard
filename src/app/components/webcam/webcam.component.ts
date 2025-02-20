@@ -10,7 +10,8 @@ import { FaceRecognitionService } from '../../services/face-recognition.service'
 export class WebcamComponent implements OnInit {
   @ViewChild('video', { static: true }) video!: ElementRef<HTMLVideoElement>;
   detectedFaces: any[] = [];
-  detectionDate: string = ""; // Propriété pour stocker la date et l'heure de la détection
+  detectionDate: Date | null = null; // Propriété pour stocker la date et l'heure de la détection
+  welcomeMessage: string = '';
 
   constructor(private faceRecognitionService: FaceRecognitionService) {}
 
@@ -41,29 +42,39 @@ export class WebcamComponent implements OnInit {
     this.faceRecognitionService.detectFaces().subscribe(
       response => {
         this.detectedFaces = response.faces;
+        
         // Enregistre la date et l'heure de la détection
-        this.detectionDate = new Date().toLocaleString();
+        this.detectionDate = new Date();
+  
+        // Si un visage est détecté, enregistre le message de bienvenue
+        if (this.detectedFaces && this.detectedFaces.length > 0) {
+          const name = this.detectedFaces[0].name;
+          this.welcomeMessage = `Bienvenue, ${name} ! Je vous souhaite une très belle journée !`;
+          
+          // Lire à haute voix le message de bienvenue
+          this.speakText(this.welcomeMessage);
+        }
+  
         console.log("Détection réussie :", response.faces);
+  
         // Pour chaque visage détecté, lire le nom à haute voix
-        this.detectedFaces.forEach(face => {
-          this.speakName(face.name);
-        });
+        //this.detectedFaces.forEach(face => {
+          //this.speakText(`Nom détecté : ${face.name}`);
+       // });
       },
       error => {
         console.error('Erreur lors de la détection des visages', error);
+        
         alert("Erreur serveur : " + JSON.stringify(error.error));
       }
     );
   }
+   
 
-  speakName(name: string): void {
-    // Utilise l'API Web Speech pour lire le nom à haute voix
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(name);
-      utterance.lang = 'fr-FR';  // Langue française (à modifier si besoin)
-      window.speechSynthesis.speak(utterance);
-    } else {
-      console.log("La synthèse vocale n'est pas disponible.");
-    }
+  speakText(text: string): void {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'fr-FR';  // Langue française (tu peux la changer si besoin)
+    window.speechSynthesis.speak(speech);
   }
+  
 }

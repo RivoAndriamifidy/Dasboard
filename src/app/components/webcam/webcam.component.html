@@ -16,13 +16,19 @@
     <!-- Partie droite : Affichage des infos -->
     <div class="col-md-6 text-left">
       <div class="info-section">
-        <!-- Nom de l'utilisateur détecté -->
-        <p><strong>Nom :</strong> <span *ngFor="let face of detectedFaces">{{ face.name }}</span></p>
+        <!-- Section de bienvenue -->
+        <div class="welcome-message">
+          <p><strong>{{ welcomeMessage }}</strong></p>
+        </div>
         
         <!-- Date et heure d'arrivée -->
-        <p><strong>Date :</strong> {{ detectionDate | date: 'dd/MM/yyyy' }}</p>
-        <p><strong>Heure :</strong> {{ detectionDate | date: 'HH:mm:ss' }}</p>
+        <!-- <div class="date-time-info">
+          <p><strong>Date :</strong> {{ detectionDate | date: 'dd/MM/yyyy' }}</p>
+          <p><strong>Heure :</strong> {{ detectionDate | date: 'HH:mm:ss' }}</p>
+        </div> -->
       </div>
     </div>
+    
+
   </div>
 </div>

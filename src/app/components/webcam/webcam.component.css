@@ -1,2 +1,44 @@
-
+/* Styles généraux pour la section d'affichage */
+.info-section {
+    background-color: #f7f7f7; /* Couleur de fond claire */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère autour du bloc */
+    margin-bottom: 20px;
+  }
+  
+  /* Style pour le message de bienvenue */
+  .welcome-message {
+    font-size: 1.2rem; /* Taille de police plus grande */
+    font-weight: bold;
+    color: #4CAF50; /* Vert */
+    text-align: center; /* Centre le texte */
+    margin-bottom: 15px;
+  }
+  
+  /* Style pour les informations de date et d'heure */
+  .date-time-info {
+    font-size: 1rem;
+    color: #333; /* Gris foncé pour les textes */
+    text-align: left; /* Aligne à gauche */
+  }
+  
+  .date-time-info p {
+    margin: 5px 0; /* Espacement entre les paragraphes */
+  }
+  
+  /* Style responsive pour un meilleur affichage sur mobile */
+  @media (max-width: 768px) {
+    .info-section {
+      padding: 15px;
+    }
+  
+    .welcome-message {
+      font-size: 1.1rem;
+    }
+  
+    .date-time-info {
+      font-size: 0.9rem;
+    }
+  }
+  
   
