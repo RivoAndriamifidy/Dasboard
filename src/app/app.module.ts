@@ -10,6 +10,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminPaneauComponent } from './components/admin-paneau/admin-paneau.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { EmployeesPointageComponent } from './components/employees-pointage/employees-pointage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { EmployeesComponent } from './components/employees/employees.component';
     WebcamComponent,
     DashboardComponent,
     AdminPaneauComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeesPointageComponent
   ],
   imports: [
     BrowserModule,

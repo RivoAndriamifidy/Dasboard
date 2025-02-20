@@ -17,6 +17,11 @@
             <i class="fa fa-clock-o"></i> Gestion des pointages
           </a>
         </li>
+        <li class="nav-item mt-3" (click)="setActive('conge')">
+          <a class="nav-link text-white" [class.active]="activePage === 'conge'">
+            <i class="fa fa-calendar-check-o"></i> Gestion des congés
+          </a>
+        </li>        
         <li class="nav-item mt-3" (click)="setActive('salaries')">
           <a class="nav-link text-white" [class.active]="activePage === 'salaries'">
             <i class="fa fa-money"></i> Gestion des salaires
@@ -41,8 +46,12 @@
       </div>
   
       <div *ngIf="activePage === 'attendance'">
-        <h2>⏱️ Gestion des pointages</h2>
-        <p>Historique des pointages...</p>
+        <app-employees-pointage></app-employees-pointage>
+      </div>
+
+      <div *ngIf="activePage === 'conge'">
+        <h2>🏖️  Gestion des congés</h2>
+        <p>Calcul des congés...</p>
       </div>
   
       <div *ngIf="activePage === 'salaries'">
