@@ -2,11 +2,11 @@
     <!-- MENU LATÉRAL -->
     <div class="sidebar text-white"   style="position: relative;">
       <ul class="nav flex-column">
-        <li class="nav-item mt-3" (click)="setActive('dashboard')" >
+        <li class="nav-item mt-3" (click)="setActive('dashboard')">
           <a class="nav-link text-white" [class.active]="activePage === 'dashboard'">
             <i class="fa fa-home"></i> Tableau de bord
           </a>
-        </li>
+        </li>    
         <li class="nav-item mt-3" (click)="setActive('employees')">
           <a class="nav-link text-white" [class.active]="activePage === 'employees'">
             <i class="fa fa-users"></i> Gestion des employés
@@ -31,10 +31,9 @@
     </div>
   
     <!-- CONTENU PRINCIPAL -->
-    <div class="p-4">
+    <div class="container p-4">
       <div *ngIf="activePage === 'dashboard'">
-        <h2>📊 Tableau de bord</h2>
-        <p>Statistiques générales...</p>
+        <app-admin-paneau></app-admin-paneau>
       </div>
   
       <div *ngIf="activePage === 'employees'">

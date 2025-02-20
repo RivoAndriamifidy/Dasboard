@@ -7,12 +7,14 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { WebcamComponent } from './components/webcam/webcam.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AdminPaneauComponent } from './components/admin-paneau/admin-paneau.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WebcamComponent,
-    DashboardComponent
+    DashboardComponent,
+    AdminPaneauComponent
   ],
   imports: [
     BrowserModule,
