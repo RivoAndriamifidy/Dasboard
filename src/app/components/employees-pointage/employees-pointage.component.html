@@ -1,18 +1,12 @@
 <div class="container-fluid">
-    <h2>📅 Gestion des pointages & congés</h2>
+    <h2>⏰ Gestion des pointages</h2>
 
-    <!-- Boutons -->
-    <div class="mb-3">
-        <button class="btn btn-primary mr-2" (click)="openAddLeaveModal()">
-          <i class="fa fa-clock-o"></i> Ajouter un pointage
-        </button>
-        <button class="btn btn-success" (click)="openAddLeaveModal()">
-          <i class="fa fa-calendar"></i> Ajouter un congé
-        </button>
-    </div>
+    <!-- Bouton pour ajouter un pointage -->
+    <button class="btn btn-primary mb-3" (click)="openAddAttendanceModal()">
+      <i class="fa fa-plus"></i> Ajouter un pointage
+    </button>
 
     <!-- Tableau des pointages -->
-    <h4>🕒 Pointages</h4>
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -45,79 +39,33 @@
         </tbody>
     </table>
 
-    <!-- Tableau des congés -->
-    <h4>🏖️ Congés</h4>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>#</th>
-                <th>Nom de l'employé</th>
-                <th>Date début</th>
-                <th>Date fin</th>
-                <th>Type</th>
-                <th>Durée (jours)</th>
-                <th>Statut</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let leave of leaves; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ leave.employeeName }}</td>
-                <td>{{ leave.startDate }}</td>
-                <td>{{ leave.endDate }}</td>
-                <td>{{ leave.type }}</td>
-                <td>{{ leave.duration }}</td>
-                <td>
-                    <span [ngClass]="{
-                        'badge badge-success': leave.status === 'Approuvé',
-                        'badge badge-warning': leave.status === 'En attente',
-                        'badge badge-danger': leave.status === 'Refusé'
-                    }">{{ leave.status }}</span>
-                </td>
-                <td>
-                    <button class="btn btn-warning btn-sm" (click)="editAttendance(leave)">
-                        <i class="fa fa-pencil"></i> Modifier
-                    </button>
-                    <button class="btn btn-danger btn-sm" (click)="deleteAttendance(leave.id)">
-                        <i class="fa fa-trash"></i> Supprimer
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Modal pour ajouter un congé -->
-    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showAddLeaveModal}" [style.display]="showAddLeaveModal ? 'block' : 'none'">
+    <!-- Modal pour ajouter un pointage -->
+    <div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': showAddModal}" [style.display]="showAddModal ? 'block' : 'none'">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between">
-                    <h5 class="modal-title">Ajouter un congé</h5>
-                    <button type="button" class="close" (click)="closeAddLeaveModal()">&times;</button>
+                    <h5 class="modal-title">Ajouter un pointage</h5>
+                    <button type="button" class="close" (click)="closeAddAttendanceModal()">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form (ngSubmit)="addLeave()">
+                    <form (ngSubmit)="addAttendance()">
                         <div class="form-group">
-                            <label for="employeeLeave">Employé</label>
-                            <select id="employeeLeave" [(ngModel)]="newLeave.employeeName" name="employeeName" class="form-control" required>
+                            <label for="employee">Employé</label>
+                            <select id="employee" [(ngModel)]="newAttendance.employeeName" name="employeeName" class="form-control" required>
                                 <option *ngFor="let employee of employees" [value]="employee.name">{{ employee.name }}</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="startDate">Date de début</label>
-                            <input type="date" id="startDate" [(ngModel)]="newLeave.startDate" name="startDate" class="form-control" required />
+                            <label for="date">Date</label>
+                            <input type="date" id="date" [(ngModel)]="newAttendance.date" name="date" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label for="endDate">Date de fin</label>
-                            <input type="date" id="endDate" [(ngModel)]="newLeave.endDate" name="endDate" class="form-control" required />
+                            <label for="checkIn">Heure d'entrée</label>
+                            <input type="time" id="checkIn" [(ngModel)]="newAttendance.checkIn" name="checkIn" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label for="type">Type de congé</label>
-                            <select id="type" [(ngModel)]="newLeave.type" name="type" class="form-control" required>
-                                <option value="Congé payé">Congé payé</option>
-                                <option value="Congé maladie">Congé maladie</option>
-                                <option value="Congé sans solde">Congé sans solde</option>
-                            </select>
+                            <label for="checkOut">Heure de sortie</label>
+                            <input type="time" id="checkOut" [(ngModel)]="newAttendance.checkOut" name="checkOut" class="form-control" />
                         </div>
                         <button type="submit" class="btn btn-success">Ajouter</button>
                     </form>

@@ -24,9 +24,9 @@
         </li>        
         <li class="nav-item mt-3" (click)="setActive('salaries')">
           <a class="nav-link text-white" [class.active]="activePage === 'salaries'">
-            <i class="fa fa-money"></i> Gestion des salaires
+            <i class="fa fa-money-bill"></i> Gestion des salaires
           </a>
-        </li>
+        </li>        
         <li class="nav-item mt-3" (click)="setActive('settings')">
           <a class="nav-link text-white" [class.active]="activePage === 'settings'">
             <i class="fa fa-cog"></i> Paramètres
@@ -50,8 +50,7 @@
       </div>
 
       <div *ngIf="activePage === 'conge'">
-        <h2>🏖️  Gestion des congés</h2>
-        <p>Calcul des congés...</p>
+        <app-conge></app-conge>
       </div>
   
       <div *ngIf="activePage === 'salaries'">

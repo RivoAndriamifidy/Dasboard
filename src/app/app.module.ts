@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminPaneauComponent } from './components/admin-paneau/admin-paneau.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeesPointageComponent } from './components/employees-pointage/employees-pointage.component';
+import { CongeComponent } from './components/conge/conge.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EmployeesPointageComponent } from './components/employees-pointage/empl
     DashboardComponent,
     AdminPaneauComponent,
     EmployeesComponent,
-    EmployeesPointageComponent
+    EmployeesPointageComponent,
+    CongeComponent
   ],
   imports: [
     BrowserModule,

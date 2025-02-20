@@ -16,37 +16,41 @@ export class EmployeesPointageComponent {
   ];
 
   attendances: any[] = [];
-  leaves: any[] = [];
-  showAddLeaveModal: boolean = false;
-  newLeave: any = { employeeName: '', startDate: '', endDate: '', type: '', status: 'En attente' };
+  showAddModal: boolean = false;
+  newAttendance: any = { employeeName: '', date: '', checkIn: '', checkOut: '' };
 
-  openAddLeaveModal() {
-    this.showAddLeaveModal = true;
+  openAddAttendanceModal() {
+    this.showAddModal = true;
   }
 
-  closeAddLeaveModal() {
-    this.showAddLeaveModal = false;
-    this.newLeave = { employeeName: '', startDate: '', endDate: '', type: '', status: 'En attente' };
+  closeAddAttendanceModal() {
+    this.showAddModal = false;
+    this.newAttendance = { employeeName: '', date: '', checkIn: '', checkOut: '' };
   }
 
-  addLeave() {
-    this.calculateLeaveDuration();
-    this.leaves.push({ ...this.newLeave });
-    this.closeAddLeaveModal();
+  addAttendance() {
+    if (this.newAttendance.checkOut) {
+      this.calculateDuration();
+    }
+
+    this.attendances.push({ ...this.newAttendance });
+    this.closeAddAttendanceModal();
   }
 
-  editAttendance(leave: any) {
-    this.newLeave = { ...leave };
-    this.openAddLeaveModal();
+  editAttendance(attendance: any) {
+    this.newAttendance = { ...attendance };
+    this.openAddAttendanceModal();
   }
 
   deleteAttendance(id: number) {
-    this.leaves = this.leaves.filter(l => l.id !== id);
+    this.attendances = this.attendances.filter(a => a.id !== id);
   }
 
-  calculateLeaveDuration() {
-    const start = new Date(this.newLeave.startDate);
-    const end = new Date(this.newLeave.endDate);
-    this.newLeave.duration = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+  calculateDuration() {
+    const checkInTime = new Date(`2023-01-01T${this.newAttendance.checkIn}:00`);
+    const checkOutTime = new Date(`2023-01-01T${this.newAttendance.checkOut}:00`);
+
+    const diff = (checkOutTime.getTime() - checkInTime.getTime()) / (1000 * 60 * 60);
+    this.newAttendance.duration = `${diff.toFixed(2)} h`;
   }
 }
