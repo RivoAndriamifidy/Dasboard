@@ -14,6 +14,7 @@ import { EmployeesPointageComponent } from './components/employees-pointage/empl
 import { CongeComponent } from './components/conge/conge.component';
 import { SalairesComponent } from './components/salaires/salaires.component';
 import { UsersComponent } from './components/users/users.component';
+import { UserSpaceComponent } from './components/user-space/user-space.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsersComponent } from './components/users/users.component';
     EmployeesPointageComponent,
     CongeComponent,
     SalairesComponent,
-    UsersComponent
+    UsersComponent,
+    UserSpaceComponent
   ],
   imports: [
     BrowserModule,
